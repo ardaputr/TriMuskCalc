@@ -19,7 +19,7 @@ class _DashboardPageState extends State<DashboardPage> {
     {
       "icon": Icons.logout,
       "label": "Logout",
-      "route": null, // Logout tidak punya route, kita akan tangani manual
+      "route": null,
     },
   ];
   List<Map<String, dynamic>> filteredMenuItems = [];
