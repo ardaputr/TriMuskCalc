@@ -13,11 +13,9 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _isPasswordVisible = false;
-  bool _rememberMe = false;
   String? _usernameError;
   String? _passwordError;
 
-  // Daftar akun yang valid
   final Map<String, String> validUsers = {
     "Waramatja": "163",
     "Othman": "157",
@@ -108,7 +106,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 10),
-            _buildRememberMe(),
             const SizedBox(height: 20),
             _buildGradientLoginButton(),
             const SizedBox(height: 20),
@@ -191,23 +188,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildRememberMe() {
-    return Row(
-      children: [
-        Checkbox(
-          value: _rememberMe,
-          activeColor: const Color(0xFF0D72FF),
-          onChanged: (value) {
-            setState(() {
-              _rememberMe = value!;
-            });
-          },
-        ),
-        const Text("Remember me", style: TextStyle(color: Colors.black54)),
-      ],
-    );
-  }
-
   Widget _buildGradientLoginButton() {
     return GestureDetector(
       onTap: _login,
@@ -247,13 +227,25 @@ class _LoginPageState extends State<LoginPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildSocialIcon(Icons.g_mobiledata, Colors.blue),
+            _buildSocialImage("asset/icon/google.png"),
             const SizedBox(width: 16),
-            _buildSocialIcon(
-                Icons.facebook, const Color.fromARGB(255, 41, 123, 255)),
+            _buildSocialImage("asset/icon/facebook.png"),
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildSocialImage(String assetPath) {
+    return GestureDetector(
+      onTap: () {
+        // Tambahkan fungsi login jika diperlukan
+      },
+      child: Image.asset(
+        assetPath,
+        width: 40,
+        height: 40,
+      ),
     );
   }
 
