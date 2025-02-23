@@ -81,7 +81,7 @@ class _OddEvenPageState extends State<OddEvenPage> {
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 23, 171, 102),
+                          color: Color.fromARGB(255, 34, 179, 111),
                         ),
                       ),
                     ),

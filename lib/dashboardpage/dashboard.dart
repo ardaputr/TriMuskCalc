@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trimusckcalc/loginpage/login.dart';
 import 'package:trimusckcalc/mathpage/calculator.dart';
 import 'package:trimusckcalc/mathpage/oddeven.dart';
+import 'package:trimusckcalc/dashboardpage/memberlist.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -15,7 +16,7 @@ class _DashboardPageState extends State<DashboardPage> {
   List<Map<String, dynamic>> menuItems = [
     {"icon": Icons.calculate, "label": "Calculator", "route": CalculatorPage()},
     {"icon": Icons.filter_1, "label": "Odd Even", "route": OddEvenPage()},
-    {"icon": Icons.group, "label": "Member List"},
+    {"icon": Icons.group, "label": "Member List", "route": MemberListPage()},
     {
       "icon": Icons.logout,
       "label": "Logout",
