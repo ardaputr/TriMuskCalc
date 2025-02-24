@@ -64,6 +64,7 @@ flutter:
     - asset/member/man1.jpg
     - asset/member/man2.jpg
     - asset/member/man3.jpg
+    - asset/member/man4.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

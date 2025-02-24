@@ -27,6 +27,11 @@ class MemberListPage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           children: [
             _buildMemberCard(
+              name: "Nofan Zohrial",
+              nim: "123220023",
+              image: "asset/member/man4.jpg",
+            ),
+            _buildMemberCard(
               name: "Nolan Tabina",
               nim: "123220049",
               image: "asset/member/man1.jpg",
