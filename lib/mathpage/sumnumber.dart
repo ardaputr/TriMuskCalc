@@ -36,7 +36,7 @@ class _SumNumberPageState extends State<SumNumberPage> {
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Harap masukkan angka yang valid")),
+        const SnackBar(content: Text("Please enter a valid number")),
       );
     }
   }

@@ -33,28 +33,28 @@ class _LoginPageState extends State<LoginPage> {
 
     if (username.isEmpty) {
       setState(() {
-        _usernameError = "Username tidak boleh kosong";
+        _usernameError = "Username cannot be empty";
       });
       return;
     }
 
     if (password.isEmpty) {
       setState(() {
-        _passwordError = "Password tidak boleh kosong";
+        _passwordError = "Password cannot be empty";
       });
       return;
     }
 
     if (!validUsers.containsKey(username)) {
       setState(() {
-        _usernameError = "Username tidak ditemukan";
+        _usernameError = "Username not found";
       });
       return;
     }
 
     if (validUsers[username] != password) {
       setState(() {
-        _passwordError = "Password salah";
+        _passwordError = "Incorrect password";
       });
       return;
     }
