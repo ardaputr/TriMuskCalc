@@ -8,7 +8,7 @@ class MemberListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Member List"),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
