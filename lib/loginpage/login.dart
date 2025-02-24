@@ -20,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
     "Waramatja": "163",
     "Othman": "157",
     "Nolan": "049",
+    "Nofan": "023",
   };
 
   void _login() {
