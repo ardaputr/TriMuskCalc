@@ -73,7 +73,7 @@ class _DashboardPageState extends State<DashboardPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Text(
-            "\nWelcome,\nTriMusk-Calc",
+            "\nTriMusk-Calc",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,

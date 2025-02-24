@@ -43,11 +43,9 @@ class _SumNumberPageState extends State<SumNumberPage> {
 
   String _formatSum() {
     if (_sum % 1 == 0) {
-      return _sum
-          .toInt()
-          .toString(); // Jika bilangan bulat, tampilkan tanpa desimal
+      return _sum.toInt().toString();
     } else {
-      return _sum.toString(); // Jika desimal, tampilkan seperti biasa
+      return _sum.toString();
     }
   }
 
