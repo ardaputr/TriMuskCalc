@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 20),
             _buildSocialMediaLogin(),
             const SizedBox(height: 20),
-            _buildForgotPassword(),
+            //_buildForgotPassword(),
           ],
         ),
       ),
@@ -238,33 +238,11 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildSocialImage(String assetPath) {
     return GestureDetector(
-      onTap: () {
-        // Tambahkan fungsi login jika diperlukan
-      },
+      onTap: () {},
       child: Image.asset(
         assetPath,
         width: 40,
         height: 40,
-      ),
-    );
-  }
-
-  Widget _buildSocialIcon(IconData icon, Color color) {
-    return CircleAvatar(
-      radius: 22,
-      backgroundColor: color.withOpacity(0.2),
-      child: Icon(icon, color: color, size: 28),
-    );
-  }
-
-  Widget _buildForgotPassword() {
-    return GestureDetector(
-      onTap: () {},
-      child: const Text(
-        "Forgot your password?",
-        style: TextStyle(
-            color: Color.fromARGB(255, 101, 101, 101),
-            fontWeight: FontWeight.bold),
       ),
     );
   }
