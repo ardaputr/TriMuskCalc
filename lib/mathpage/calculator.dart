@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CalculatorPage extends StatefulWidget {
   const CalculatorPage({super.key});
@@ -13,18 +14,44 @@ class _CalculatorPageState extends State<CalculatorPage> {
   String _result = '';
 
   void _calculate(bool isAddition) {
-    int num1 = int.tryParse(_num1Controller.text) ?? 0;
-    int num2 = int.tryParse(_num2Controller.text) ?? 0;
-    int result = isAddition ? (num1 + num2) : (num1 - num2);
-    setState(() {
-      _result = 'Result: $result';
-    });
+    try {
+      final RegExp validNumberRegExp = RegExp(r'^-?\d*\.?\d+\$');
+
+      if (!validNumberRegExp.hasMatch(_num1Controller.text) &&
+          _num1Controller.text.isNotEmpty) {
+        setState(() {
+          _result = 'Invalid input for Number 1';
+        });
+        return;
+      }
+
+      if (!validNumberRegExp.hasMatch(_num2Controller.text) &&
+          _num2Controller.text.isNotEmpty) {
+        setState(() {
+          _result = 'Invalid input for Number 2';
+        });
+        return;
+      }
+
+      double num1 = double.tryParse(_num1Controller.text) ?? 0;
+      double num2 = double.tryParse(_num2Controller.text) ?? 0;
+
+      double result = isAddition ? (num1 + num2) : (num1 - num2);
+
+      setState(() {
+        _result = 'Result: ${result.toStringAsPrecision(10)}';
+      });
+    } catch (e) {
+      setState(() {
+        _result = 'Error: ${e.toString()}';
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Calculator')),
+      appBar: AppBar(title: const Text('Precision Calculator')),
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(20),
@@ -46,7 +73,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
-                    "Enter A Number",
+                    "High Precision Calculator",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -89,12 +116,25 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: _result.isNotEmpty ? 1.0 : 0.0,
-                      child: Text(
-                        _result,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
+                      child: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.blue.shade50,
+                          borderRadius: BorderRadius.circular(12),
+                          border:
+                              Border.all(color: Colors.blue.shade200, width: 1),
+                        ),
+                        width: double.infinity,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Text(
+                            _result,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -114,16 +154,24 @@ class _CalculatorPageState extends State<CalculatorPage> {
   }) {
     return TextField(
       controller: controller,
-      keyboardType: TextInputType.number,
+      keyboardType:
+          TextInputType.numberWithOptions(decimal: true, signed: true),
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'[-0-9.]')),
+      ],
       style: const TextStyle(fontSize: 16),
+      maxLines: 1,
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: Colors.blue),
         labelText: label,
+        hintText: 'Enter a number',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
         filled: true,
         fillColor: Colors.blue.shade50,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       ),
     );
   }
